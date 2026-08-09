@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ru — the rhythm of rest | voco Scenia Bay Nha Trang</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="theme-color" content="#F7B70F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ---------- LIGHT (default) ---------- */
+  :root{
+    --white:#F7F5F2;      /* page background — warm paper */
+    --card:#FFFFFF;       /* raised surfaces */
+    --black:#14161A;      /* main text */
+    --gold:#F7B70F;       /* voco gold — same in both themes */
+    --gold-text:#8A6100;  /* gold that is readable as text */
+    --sel:#FBF1DA;        /* chosen option fill */
+    --on-gold:#000000;    /* text sitting ON gold — always black */
+    --sea-deep:#0F3B4C;   /* headings, "Ru", summary header */
+    --sea:#2C7186;        /* accents */
+    --sea-wash:#EDF4F6;   /* selected option, morning card */
+    --line:#DCE6EA;       /* borders */
+    --grey:#495256;       /* secondary text */
+    --display:"Playfair Display",Georgia,serif;
+    --serif:"Source Serif 4",Georgia,serif; /* prose + options */
+    --body:"Inter",system-ui,sans-serif;  /* interface */
+  }
+
+  /* ---------- DARK ---------- */
+  html[data-theme="dark"]{
+    --white:#0C1114;
+    --card:#131A1E;
+    --gold-text:#F7B70F;
+    --sel:#241C10;
+    --black:#F1F5F6;
+    --sea-deep:#9CCBDA;
+    --sea:#6FB4C9;
+    --sea-wash:#152932;
+    --line:#263D46;
+    --grey:#AAB8BD;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+
+  body{
+    background:var(--white);color:var(--black);
+    font-family:var(--body);font-weight:400;line-height:1.64;
+    -webkit-font-smoothing:antialiased;
+    transition:background 320ms ease,color 320ms ease;
+  }
+
+  .wrap{max-width:640px;margin:0 auto;padding:0 22px 88px}
+
+  .stage-visual{position:sticky;top:0;z-index:20;background:var(--white);padding:12px 0 10px}
+
+  @media (min-width:980px){
+    .wrap{
+      max-width:1180px;display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+      gap:56px;align-items:start;padding-top:8px;
+    }
+    .stage-visual{top:76px;padding-top:24px}
+    .stage-form{min-width:0}
+    body.host-mode .wrap{display:block;max-width:640px}
+  }
+  body.host-mode .stage-visual,
+  body.host-mode .stage-form{display:none}
+
+  .brandbar{background:var(--gold);color:var(--on-gold);padding:11px 22px}
+  .brandbar div{
+    max-width:640px;margin:0 auto;display:flex;
+    justify-content:space-between;align-items:center;gap:9px;
+  }
+  .brandbar b{font-family:var(--display);font-weight:500;font-size:19px;letter-spacing:.02em}
+  .brandbar .prop{
+    font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:500;margin-left:auto;margin-right:6px;
+  }
+  .barbtn{
+    all:unset;cursor:pointer;flex-shrink:0;color:var(--on-gold);
+    border:1px solid rgba(0,0,0,.4);border-radius:2px;
+    font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    transition:background 180ms,color 180ms;
+  }
+  #lang{padding:5px 10px}
+  #theme{padding:5px 9px;font-size:13px;letter-spacing:0;line-height:1}
+  .barbtn:hover{background:#000;color:var(--gold)}
+  .barbtn:focus-visible{outline:2px solid #000;outline-offset:2px}
+
+  .room{
+    display:none;height:230px;border-radius:3px;overflow:hidden;
+    background:#0C1A20;position:relative;cursor:grab;
+    box-shadow:0 18px 44px rgba(0,0,0,.14);
+  }
+  @media (min-width:980px){ .room{height:min(500px,calc(100vh - 260px))} }
+  .room.on{display:block}
+  .room:active{cursor:grabbing}
+  .room canvas{width:100%;height:100%;display:block;touch-action:none}
+  .room-hint{
+    position:absolute;bottom:9px;right:11px;z-index:2;
+    font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:rgba(255,255,255,.62);pointer-events:none;
+  }
+
+  .nightbar-shell{
+    position:sticky;top:0;z-index:20;background:var(--white);
+    padding:13px 22px 11px;border-bottom:1px solid var(--line);
+    transition:background 320ms ease;
+  }
+  .nightbar-inner{max-width:640px;margin:0 auto}
+  .nightbar{
+    height:52px;border-radius:2px;position:relative;overflow:hidden;
+    background:linear-gradient(90deg,#1D4A5B 0%,#08161C 50%,#08161C 78%,#31434B 100%);
+    transition:background 900ms cubic-bezier(.4,0,.2,1);
+  }
+  .nightbar canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+  body.has3d .nightbar{margin-top:10px;height:44px}
+  @media (max-width:979px){
+    body.has3d .nightbar,
+    body.has3d .nightbar-marks{display:none}
+  }
+  .nightbar-marks{
+    display:flex;justify-content:space-between;margin-top:6px;
+    font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--grey);font-weight:500;
+  }
+
+  header{padding:56px 0 44px}
+  .eyebrow{
+    font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--sea);margin-bottom:22px;font-weight:600;
+  }
+  h1{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(70px,20vw,124px);line-height:.86;letter-spacing:-.03em;
+    color:var(--sea-deep);
+  }
+  .lockup{
+    font-family:var(--display);font-style:italic;font-weight:500;
+    font-size:clamp(19px,4.6vw,25px);color:var(--sea);margin-top:12px;
+  }
+  .gloss{margin-top:26px;max-width:46ch;color:var(--grey);font-family:var(--serif);font-size:16px;line-height:1.75}
+  .gloss b{color:var(--black);font-weight:500}
+  .gloss span{display:block;margin-top:14px}
+
+  section{padding:38px 0 34px;border-top:1px solid var(--line)}
+  .q-head{display:flex;align-items:baseline;gap:13px}
+  .qnum{
+    font-family:var(--display);font-style:italic;font-weight:500;
+    font-size:17px;color:var(--gold-text);flex-shrink:0;
+    font-variant-numeric:tabular-nums;
+  }
+  h2{
+    font-family:var(--display);font-weight:700;
+    font-size:29px;letter-spacing:-.018em;line-height:1.22;color:var(--black);
+  }
+  .q-note{color:var(--grey);font-family:var(--serif);font-size:15.5px;margin:9px 0 22px;max-width:47ch;line-height:1.65}
+
+  .opts{display:grid;gap:8px}
+  .opts.two{grid-template-columns:1fr 1fr}
+
+  button.opt{
+    all:unset;cursor:pointer;display:block;background:var(--card);
+    border:1px solid var(--line);border-radius:3px;padding:15px 17px;
+    transition:border-color 220ms,background 220ms,box-shadow 220ms;
+  }
+  button.opt:hover{border-color:var(--gold)}
+  button.opt:focus-visible{outline:2px solid var(--gold-text);outline-offset:2px}
+  button.opt[aria-pressed="true"]{
+    background:var(--sel);border:2px solid var(--gold);padding:14px 16px;
+  }
+  button.opt[aria-pressed="true"] .opt-name{color:var(--gold-text)}
+  .opt-name{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--black);display:block;letter-spacing:-.005em;transition:color 220ms}
+  .opt-vn{
+    font-family:var(--serif);font-size:14px;font-weight:500;
+    color:var(--sea);display:block;margin-top:1px;
+  }
+  .opt-vn:empty{display:none}
+  .opt-desc{font-family:var(--serif);font-size:14.5px;color:var(--grey);display:block;margin-top:5px;line-height:1.62}
+  .tierflag{
+    display:inline-block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:600;color:var(--on-gold);background:var(--gold);
+    border-radius:2px;padding:2px 6px;margin-left:7px;vertical-align:2px;
+  }
+
+  input[type=range]{
+    -webkit-appearance:none;appearance:none;width:100%;height:2px;
+    background:var(--line);border-radius:2px;outline:none;margin:22px 0 8px;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+    background:var(--sea);cursor:pointer;border:3px solid var(--white);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:20px;height:20px;border-radius:50%;background:var(--sea);
+    cursor:pointer;border:3px solid var(--white);
+  }
+  input[type=range]:focus-visible{outline:2px solid var(--sea);outline-offset:6px}
+  .slider-val{
+    font-family:var(--display);font-size:32px;color:var(--sea-deep);
+    font-variant-numeric:tabular-nums;
+  }
+  .slider-val span{font-size:13.5px;color:var(--grey);margin-left:9px}
+
+  .summary{
+    margin-top:22px;border:1px solid var(--line);border-radius:2px;
+    background:var(--white);overflow:hidden;
+  }
+  .summary-top{background:var(--sea-deep);color:var(--white);padding:19px 20px}
+  .summary-title{font-family:var(--display);font-size:21px;font-weight:600}
+  .summary-sub{
+    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    opacity:.88;margin-top:5px;font-weight:500;
+  }
+  dl{padding:4px 20px 16px}
+  .row{
+    display:flex;justify-content:space-between;gap:18px;
+    padding:11px 0;border-bottom:1px solid var(--sea-wash);
+  }
+  .row:last-child{border-bottom:none}
+  dt{
+    font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--grey);padding-top:3px;font-weight:500;
+  }
+  dd{font-size:15px;text-align:right;color:var(--black)}
+
+  .cta{
+    all:unset;cursor:pointer;display:block;width:100%;text-align:center;
+    margin-top:18px;padding:17px;border-radius:2px;
+    background:var(--black);color:var(--white);
+    font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    transition:background 200ms,color 200ms;
+  }
+  .cta:hover{background:var(--sea-deep)}
+  .cta:focus-visible{outline:2px solid var(--sea);outline-offset:3px}
+  .cta[disabled]{background:var(--line);color:var(--white);cursor:not-allowed}
+
+  .code-card{
+    display:none;margin-top:14px;border-radius:2px;text-align:center;
+    background:var(--gold);padding:24px 20px;
+  }
+  .code-card.on{display:block;animation:rise 650ms cubic-bezier(.2,.7,.3,1)}
+  .code-card p{font-family:var(--display);font-size:18px;color:var(--on-gold)}
+  .code{
+    font-family:var(--display);font-size:clamp(38px,12vw,54px);font-weight:500;
+    letter-spacing:.08em;color:var(--on-gold);margin:8px 0 9px;
+  }
+  .code-card small{
+    font-size:14px;color:var(--on-gold);opacity:.85;
+    display:block;line-height:1.65;max-width:36ch;margin:0 auto;
+  }
+
+  /* scent story */
+  .story{
+    display:none;margin-top:10px;border-left:3px solid var(--gold);
+    background:var(--sea-wash);border-radius:0 2px 2px 0;padding:16px 18px;
+  }
+  .story.on{display:block;animation:rise 550ms cubic-bezier(.2,.7,.3,1)}
+  .story h4{
+    font-family:var(--display);font-weight:700;font-size:17px;
+    color:var(--black);margin-bottom:5px;letter-spacing:-.01em;
+  }
+  .story p{font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.62}
+
+  /* audio */
+  .audio-note{
+    all:unset;display:flex;align-items:center;gap:9px;cursor:pointer;
+    margin-top:14px;padding:11px 14px;border:1px solid var(--line);border-radius:2px;
+    font-size:13.5px;color:var(--grey);box-sizing:border-box;
+    transition:border-color 200ms,color 200ms;
+  }
+  .audio-note:hover{border-color:var(--sea);color:var(--black)}
+  .audio-note:focus-visible{outline:2px solid var(--sea);outline-offset:2px}
+  .audio-note .dot{
+    width:7px;height:7px;border-radius:50%;background:var(--line);flex-shrink:0;
+    transition:background 200ms;
+  }
+  .audio-note.playing{border-color:var(--gold);color:var(--black)}
+  .audio-note.playing .dot{background:var(--gold);animation:beat 1.6s ease-in-out infinite}
+  @keyframes beat{0%,100%{opacity:1}50%{opacity:.25}}
+
+  .addr{display:block;margin:6px 0 10px;color:var(--grey)}
+
+  .morning{
+    display:none;margin-top:14px;border-radius:2px;
+    background:var(--sea-wash);border-left:3px solid var(--gold);padding:22px 20px;
+  }
+  .morning.on{display:block;animation:rise 650ms cubic-bezier(.2,.7,.3,1)}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .morning h3{font-family:var(--display);font-weight:700;font-size:22px;color:var(--black);margin-bottom:5px}
+  .morning p{font-size:14.5px;color:var(--grey);line-height:1.7}
+  .ask{font-family:var(--display);font-size:23px;color:var(--black);margin-top:16px}
+  .stars{display:flex;gap:6px;margin:13px 0 2px}
+  .star{
+    all:unset;cursor:pointer;font-size:25px;color:var(--line);
+    line-height:1;transition:color 150ms;
+  }
+  .star:focus-visible{outline:2px solid var(--sea);outline-offset:3px}
+  .star.lit{color:var(--gold)}
+  .morning small{font-size:14px;color:var(--grey);display:block;margin-top:13px;line-height:1.65}
+
+  .host{display:none;padding:44px 0}
+  body.host-mode .host{display:block}
+  body.host-mode header,
+  body.host-mode .wrap > section,
+  body.host-mode footer{display:none}
+  .host h2{margin-bottom:16px}
+  #hostcode{
+    width:100%;background:var(--white);border:1px solid var(--line);border-radius:2px;
+    color:var(--sea-deep);font-family:var(--display);font-size:36px;
+    letter-spacing:.12em;text-align:center;text-transform:uppercase;padding:18px;outline:none;
+  }
+  #hostcode:focus{border-color:var(--sea)}
+  .hint{color:var(--grey);font-size:14px;margin-top:12px;text-align:center}
+  #hostsheet{margin-top:24px;display:none}
+  #hostsheet.on{display:block;animation:rise 650ms cubic-bezier(.2,.7,.3,1)}
+  #hostsheet dd{font-family:var(--display);font-size:20px;font-weight:400}
+  .host-exit{
+    display:inline-block;margin-top:24px;color:var(--grey);font-size:10.5px;
+    letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+    border-bottom:1px solid var(--line);font-weight:500;
+  }
+
+  footer{
+    margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
+    color:var(--grey);font-size:12.5px;line-height:1.8;
+  }
+  footer b{color:var(--black);font-weight:500}
+
+  @media (max-width:520px){
+    .opts.two{grid-template-columns:1fr}
+    .brandbar .prop{display:none}
+    .brandbar b{margin-right:auto}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="brandbar"><div>
+  <b>voco</b>
+  <span class="prop">Scenia Bay Nha Trang</span>
+  <button id="theme" class="barbtn" aria-label="Switch between light and dark">☾</button>
+  <button id="lang" class="barbtn" aria-label="Switch language">Tiếng Việt</button>
+</div></div>
+
+<div class="wrap">
+
+<div class="stage-visual">
+  <div class="room" id="room">
+    <canvas id="roomcv"></canvas>
+    <span class="room-hint" data-t="drag">Drag to look around</span>
+  </div>
+  <div class="nightbar" id="nightbar" role="img" aria-label="A preview of your night">
+    <canvas id="tex" aria-hidden="true"></canvas>
+  </div>
+  <div class="nightbar-marks" id="nightbarMarks">
+    <span data-t="mEve">Evening</span>
+    <span data-t="mDeep">Deep night</span>
+    <span data-t="mMorn">Morning</span>
+  </div>
+</div>
+
+
+<div class="stage-form">
+
+<header>
+  <p class="eyebrow" data-t="eyebrow">Me time &nbsp;·&nbsp; before you arrive</p>
+  <h1>Ru</h1>
+  <p class="lockup" data-t="lockup">the rhythm of rest</p>
+  <p class="gloss" data-t="gloss">
+    <b>Ru</b> is a Vietnamese word for the gentle act of lulling someone to rest — through rhythm,
+    sound and quiet comfort.
+    <span>At voco Scenia Bay Nha Trang, we reimagine that familiar idea as something personal:
+    a room prepared around the way you rest.</span>
+  </p>
+</header>
+
+<section>
+  <div class="q-head"><span class="qnum">01</span><h2 data-t="q1">Choose the pillow that suits you</h2></div>
+  <p class="q-note" data-t="q1n">Soft, firm or cool — choose the feeling you would like to take into sleep.</p>
+  <div class="opts two" data-group="pillow">
+    <button class="opt" aria-pressed="false" data-val="Soft down">
+      <span class="opt-name" data-t="p1">Soft</span>
+      <span class="opt-desc" data-t="p1d">Down that yields gently under the head and shoulders.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Firm support">
+      <span class="opt-name" data-t="p2">Firm support</span>
+      <span class="opt-desc" data-t="p2d">Holds a steady height through the night.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Neck contour">
+      <span class="opt-name" data-t="p3">Neck support</span>
+      <span class="opt-desc" data-t="p3d">Shaped memory foam — a gentle lift after a long journey.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Cooling gel">
+      <span class="opt-name" data-t="p4">Cool</span>
+      <span class="opt-desc" data-t="p4d">A cool gel surface, welcome in the coastal air of Nha Trang.</span>
+    </button>
+  </div>
+</section>
+
+<section>
+  <div class="q-head"><span class="qnum">02</span><h2 data-t="q2">Choose a scent of the coast</h2></div>
+  <p class="q-note" data-t="q2n">Three notes drawn from Khánh Hòa, placed lightly in the room with a small card telling you where each one begins.</p>
+  <div class="opts" data-group="scent">
+    <button class="opt" aria-pressed="false" data-val="Trầm Hương" data-tone="#3E2E1C">
+      <span class="opt-name"><span data-t="s1">Agarwood</span> <span class="tierflag" data-t="tier">Suite</span></span>
+      <span class="opt-vn" data-t="s1v">Trầm Hương</span>
+      <span class="opt-desc" data-t="s1d">Warm, deep and quiet. From a province long associated with agarwood — a warm note for the close of the day.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Hòn Khói salt &amp; driftwood" data-tone="#2A3B44">
+      <span class="opt-name" data-t="s2">Sea salt &amp; wood</span>
+      <span class="opt-vn" data-t="s2v">Hòn Khói</span>
+      <span class="opt-desc" data-t="s2d">Clear and open, carrying the faint salt of the fields north of Khánh Hòa.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Pomelo &amp; lemongrass" data-tone="#33421F">
+      <span class="opt-name" data-t="s3">Pomelo &amp; lemongrass</span>
+      <span class="opt-vn" data-t="s3v">Bưởi &amp; Sả</span>
+      <span class="opt-desc" data-t="s3d">Light and fresh — a soft green space for tropical nights.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="No fragrance" data-tone="#25302E">
+      <span class="opt-name" data-t="s4">No fragrance</span>
+      <span class="opt-vn" data-t="s4v"></span>
+      <span class="opt-desc" data-t="s4d">The room kept as it is, with nothing added. Please let us know at booking if you or your companion is sensitive to fragrance.</span>
+    </button>
+  </div>
+  <div class="story" id="story">
+    <h4 id="storyTitle"></h4>
+    <p id="storyText"></p>
+  </div>
+</section>
+
+<section>
+  <div class="q-head"><span class="qnum">03</span><h2 data-t="q3">What would you like to hear tonight?</h2></div>
+  <p class="q-note" data-t="q3n">A sound kept very low to close a long day. It softens and fades after ninety minutes.</p>
+  <div class="opts two" data-group="sound">
+    <button class="opt" aria-pressed="false" data-val="The bay" data-tex="wave" data-audio="rhythm_of_the_bay.mp3">
+      <span class="opt-name" data-t="n1">The rhythm of the bay</span>
+      <span class="opt-desc" data-t="n1d">The sea, recorded beside Hòn Chồng.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="White noise" data-tex="noise" data-audio="white_noise.mp3">
+      <span class="opt-name" data-t="n2">A soft floor of sound</span>
+      <span class="opt-desc" data-t="n2d">Even, gentle white noise that eases what comes from outside.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Rain" data-tex="rain" data-audio="night_rain.mp3">
+      <span class="opt-name" data-t="n3">Night rain</span>
+      <span class="opt-desc" data-t="n3d">Steady rain, without thunder.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Silence" data-tex="none">
+      <span class="opt-name" data-t="n4">Stillness</span>
+      <span class="opt-desc" data-t="n4d">Nothing added.</span>
+    </button>
+  </div>
+  <button class="audio-note" id="audioNote" type="button">
+    <span class="dot"></span><span id="audioLabel" data-t="audioIdle">Choose a sound to hear it now</span>
+  </button>
+</section>
+
+<section>
+  <div class="q-head"><span class="qnum">04</span><h2 data-t="q4">Make the room your own</h2></div>
+  <p class="q-note" data-t="q4n">Before you return to your room, the curtains are drawn and the temperature set to your choosing.</p>
+  <div class="opts two" data-group="dark">
+    <button class="opt" aria-pressed="false" data-val="Full blackout" data-dark=".97">
+      <span class="opt-name" data-t="d1">Close the light out</span>
+      <span class="opt-desc" data-t="d1d">Curtains drawn full, letting the room fall dark.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="A little light" data-dark=".58">
+      <span class="opt-name" data-t="d2">Leave a little sky</span>
+      <span class="opt-desc" data-t="d2d">Curtains parted just enough for the light off the bay to find its way in.</span>
+    </button>
+  </div>
+  <input type="range" id="temp" min="17" max="26" value="21" step="1" aria-label="Room temperature">
+  <p class="slider-val"><span id="tempval">21</span>°C<span data-t="turn">when you return to your room</span></p>
+</section>
+
+<section>
+  <div class="q-head"><span class="qnum">05</span><h2 data-t="q5">Something before you rest?</h2></div>
+  <p class="q-note" data-t="q5n">A small drink waiting by the bed as night falls.</p>
+  <div class="opts two" data-group="tea">
+    <button class="opt" aria-pressed="false" data-val="Lotus heart tea">
+      <span class="opt-name" data-t="t1">Lotus heart tea</span>
+      <span class="opt-vn" data-t="t1v">Trà tâm sen</span>
+      <span class="opt-desc" data-t="t1d">A clean, gently bitter note, familiar in Vietnamese tea culture.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Chamomile">
+      <span class="opt-name" data-t="t2">Chamomile</span>
+      <span class="opt-desc" data-t="t2d">Soft, mild and familiar.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Warm milk">
+      <span class="opt-name" data-t="t3">Warm milk</span>
+      <span class="opt-desc" data-t="t3d">Brought up at a time you choose.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Nothing">
+      <span class="opt-name" data-t="t4">No, thank you</span>
+      <span class="opt-desc" data-t="t4d">The bedside kept clear.</span>
+    </button>
+  </div>
+</section>
+
+<section>
+  <div class="q-head"><span class="qnum">06</span><h2 data-t="q6">How would you like to meet the morning?</h2></div>
+  <p class="q-note" data-t="q6n">The bay lies to the east. Mornings at Scenia Bay begin with the first light.</p>
+  <div class="opts two" data-group="wake">
+    <button class="opt" aria-pressed="false" data-val="Sunrise light" data-warm="1">
+      <span class="opt-name" data-t="w1">Wake with the sunrise</span>
+      <span class="opt-desc" data-t="w1d">The bedside light rises slowly over twenty minutes before the time you set.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Curtains only" data-warm=".45">
+      <span class="opt-name" data-t="w2">Let the bay call the day</span>
+      <span class="opt-desc" data-t="w2d">The curtains open slowly at the time you choose.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Alarm only" data-warm="0">
+      <span class="opt-name" data-t="w3">Alarm only</span>
+      <span class="opt-desc" data-t="w3d">Light and curtains left as they are.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Don't wake me" data-warm="0">
+      <span class="opt-name" data-t="w4">Let me sleep</span>
+      <span class="opt-desc" data-t="w4d">Housekeeping will not disturb you until you get in touch.</span>
+    </button>
+  </div>
+</section>
+
+<section>
+  <div class="summary">
+    <div class="summary-top">
+      <p class="summary-title" data-t="sumT">Your own rhythm of rest</p>
+      <p class="summary-sub" id="progress">Nothing chosen yet</p>
+    </div>
+    <dl>
+      <div class="row"><dt data-t="lPillow">Pillow</dt><dd data-slot="pillow">—</dd></div>
+      <div class="row"><dt data-t="lScent">Scent</dt><dd data-slot="scent">—</dd></div>
+      <div class="row"><dt data-t="lSound">Sound</dt><dd data-slot="sound">—</dd></div>
+      <div class="row"><dt data-t="lLight">Light</dt><dd data-slot="dark">—</dd></div>
+      <div class="row"><dt data-t="lTemp">Temperature</dt><dd data-slot="temp">21°C</dd></div>
+      <div class="row"><dt data-t="lTurn">Evening ritual</dt><dd data-slot="tea">—</dd></div>
+      <div class="row"><dt data-t="lMorn">Morning</dt><dd data-slot="wake">—</dd></div>
+    </dl>
+  </div>
+
+  <button class="cta" id="send" disabled>Prepare my Ru</button>
+
+  <div class="code-card" id="codecard">
+    <p data-t="ref">Your Ru is noted</p>
+    <div class="code" id="codeout">RU-0000</div>
+    <small data-t="refd">When you arrive, these choices have already come with you to your room. Simply keep your Ru reference — we will take care of the rest.</small>
+  </div>
+
+  <div class="morning" id="morning">
+    <h3 data-t="mT">Good morning.</h3>
+    <p data-t="mP">Before the day begins, Ru would like to ask you one thing.</p>
+    <p class="ask" data-t="mAsk">Did you sleep well last night?</p>
+    <div class="stars" id="stars" role="group" aria-label="Rate your sleep">
+      <button class="star" data-n="1" aria-label="1">★</button>
+      <button class="star" data-n="2" aria-label="2">★</button>
+      <button class="star" data-n="3" aria-label="3">★</button>
+      <button class="star" data-n="4" aria-label="4">★</button>
+      <button class="star" data-n="5" aria-label="5">★</button>
+    </div>
+    <small id="reply">Below four stars, a host reaches out the same morning — while you are still with us and the night ahead can still be changed.</small>
+  </div>
+</section>
+
+</div><!-- /stage-form -->
+
+<div class="host">
+  <p class="eyebrow" data-t="hE">Front desk</p>
+  <h2 data-t="hT">Look up a stay</h2>
+  <input type="text" id="hostcode" maxlength="7" placeholder="RU-0000" aria-label="Stay reference">
+  <p class="hint" data-t="hH">Enter the guest's Ru reference to bring up their night.</p>
+  <div class="summary" id="hostsheet">
+    <div class="summary-top">
+      <p class="summary-title" data-t="hArr">Arriving tonight</p>
+      <p class="summary-sub" data-t="hSub">Ru profile on file · prepared before arrival</p>
+    </div>
+    <dl>
+      <div class="row"><dt data-t="lPillow">Pillow</dt><dd data-h="pillow">—</dd></div>
+      <div class="row"><dt data-t="lScent">Scent</dt><dd data-h="scent">—</dd></div>
+      <div class="row"><dt data-t="lSound">Sound</dt><dd data-h="sound">—</dd></div>
+      <div class="row"><dt data-t="lLight">Light</dt><dd data-h="dark">—</dd></div>
+      <div class="row"><dt data-t="lTemp">Temperature</dt><dd data-h="temp">—</dd></div>
+      <div class="row"><dt data-t="lTurn">Evening ritual</dt><dd data-h="tea">—</dd></div>
+      <div class="row"><dt data-t="lMorn">Morning</dt><dd data-h="wake">—</dd></div>
+    </dl>
+  </div>
+  <a class="host-exit" href="#" data-t="hBack">Back to the guest view</a>
+</div>
+
+<footer>
+  <b>Ru — the rhythm of rest.</b>
+  <span class="addr">voco Scenia Bay Nha Trang by IHG · Tower A, 25–26 Phạm Văn Đồng, Nha Trang, Khánh Hòa</span>
+  <span data-t="foot">Student prototype for BUSM4573 Assessment 2, HAN_GROUP 01.
+  Prepared for voco Scenia Bay Nha Trang by IHG. Not an official IHG product. Colours and type are brand-aligned,
+  not official brand assets. Scent, tea and sound details are proposals, not current hotel offerings.</span>
+</footer>
+
+</div>
+
+<script>
+(function(){
+
+var VI={
+  mEve:"Chiều tối", mDeep:"Đêm khuya", mMorn:"Buổi sáng",
+  eyebrow:"Me time &nbsp;·&nbsp; trước khi bạn đến",
+  lockup:"nhịp riêng của giấc nghỉ",
+  gloss:"<b>Ru</b> — một tiếng Việt thật dịu. Là lời hát khe khẽ, là nhịp đưa chậm rãi, là cách một ngày dài dần lắng xuống trước khi giấc ngủ bắt đầu."
+    +"<span>Tại voco Scenia Bay Nha Trang, Ru được kể lại theo một cách mới: một nhịp nghỉ được chuẩn bị riêng cho bạn.</span>",
+
+  q1:"Chọn chiếc gối hợp với bạn",
+  q1n:"Êm mềm, vững chắc hay mát dịu — hãy chọn cảm giác bạn muốn mang theo vào giấc ngủ.",
+  p1:"Êm mềm", p1d:"Gối lông vũ ôm nhẹ theo đầu và vai.",
+  p2:"Nâng đỡ vững vàng", p2d:"Giữ độ cao ổn định suốt đêm.",
+  p3:"Nâng đỡ vùng cổ", p3d:"Memory foam định hình, nâng đỡ nhẹ nhàng sau một hành trình dài.",
+  p4:"Mát dịu", p4d:"Bề mặt gel mát, dễ chịu trong khí hậu biển Nha Trang.",
+
+  q2:"Chọn một hương của miền biển",
+  q2n:"Ba hương sắc gợi nhắc Khánh Hòa, được đưa nhẹ vào không gian phòng cùng một tấm thiệp nhỏ kể câu chuyện nơi chúng bắt đầu.",
+  tier:"Hạng Suite",
+  s1:"Trầm hương", s1v:"",
+  s1d:"Ấm, sâu và trầm lắng. Từ vùng đất Khánh Hòa gắn với trầm hương qua nhiều thế hệ, một dấu hương ấm áp cho những phút cuối ngày.",
+  s2:"Muối biển &amp; gỗ", s2v:"Hòn Khói",
+  s2d:"Trong trẻo, khoáng đạt, phảng phất sắc mặn của những cánh đồng muối phía Bắc Khánh Hòa.",
+  s3:"Bưởi &amp; sả", s3v:"",
+  s3d:"Thanh nhẹ và tươi mát, dịu dàng cho những đêm ấm bên vịnh.",
+  s4:"Không hương", s4v:"",
+  s4d:"Giữ căn phòng nguyên bản, không thêm hương liệu. Vui lòng cho chúng tôi biết khi đặt phòng nếu bạn hoặc người đồng hành nhạy cảm với hương thơm.",
+
+  q3:"Đêm nay, bạn muốn nghe gì?",
+  q3n:"Một thanh âm thật khẽ để khép lại ngày dài. Sau 90 phút, âm thanh sẽ tự dịu dần rồi lặng đi.",
+  n1:"Nhịp của vịnh", n1d:"Thanh âm biển được ghi lại bên Hòn Chồng.",
+  n2:"Khoảng nền êm", n2d:"Âm nền trắng đều và nhẹ (white noise), giúp làm dịu những âm thanh từ bên ngoài.",
+  n3:"Mưa đêm", n3d:"Tiếng mưa đều, không sấm.",
+  n4:"Tĩnh lặng", n4d:"Giữ căn phòng trong sự tĩnh lặng nguyên bản.",
+
+  q4:"Tạo khoảng nghỉ của riêng bạn",
+  q4n:"Trước giờ bạn trở về phòng, rèm được khép lại và nhiệt độ được điều chỉnh theo lựa chọn của bạn.",
+  d1:"Khép trọn ánh sáng", d1d:"Rèm được kéo kín để căn phòng chìm vào bóng tối.",
+  d2:"Chừa một khoảng trời", d2d:"Rèm hé nhẹ để ánh sáng từ phía vịnh vẫn tìm được lối vào.",
+  turn:"nhiệt độ khi bạn trở về phòng",
+
+  q5:"Một chút trước giờ nghỉ?",
+  q5n:"Một thức uống nhỏ chờ bên giường khi đêm xuống.",
+  t1:"Trà tâm sen", t1v:"", t1d:"Vị đắng thanh đặc trưng, quen thuộc trong văn hóa thưởng trà Việt.",
+  t2:"Trà hoa cúc", t2d:"Nhẹ nhàng, thanh dịu và quen thuộc.",
+  t3:"Sữa ấm", t3d:"Được mang đến vào thời gian bạn lựa chọn.",
+  t4:"Không cần, cảm ơn", t4d:"Giữ không gian đầu giường gọn và nguyên bản.",
+
+  q6:"Bạn muốn đón ngày mới thế nào?",
+  q6n:"Phía Đông mở ra vịnh biển. Mỗi sớm ở Scenia Bay bắt đầu cùng ánh sáng đầu tiên trên vịnh.",
+  w1:"Thức cùng bình minh", w1d:"Ánh đèn bên giường dần sáng lên trong 20 phút trước giờ bạn chọn.",
+  w2:"Để vịnh gọi ngày mới", w2d:"Rèm từ từ mở vào giờ bạn chọn.",
+  w3:"Chỉ cần báo thức", w3d:"Giữ nguyên ánh sáng và rèm cửa.",
+  w4:"Cứ để tôi ngủ", w4d:"Buồng phòng sẽ không làm phiền cho đến khi bạn liên hệ.",
+
+  sumT:"Nhịp nghỉ của riêng bạn",
+  lPillow:"Gối", lScent:"Hương", lSound:"Thanh âm", lLight:"Ánh sáng",
+  lTemp:"Nhiệt độ", lTurn:"Nghi thức cuối ngày", lMorn:"Buổi sáng",
+
+  ref:"Ru của bạn đã được ghi nhận",
+  refd:"Khi bạn đến, những lựa chọn này đã theo bạn vào phòng. Chỉ cần giữ lại mã Ru — chúng tôi sẽ lo phần còn lại.",
+  mT:"Chào buổi sáng.",
+  mP:"Trước khi ngày mới bắt đầu, Ru chỉ muốn hỏi bạn một điều.",
+  mAsk:"Đêm qua, bạn ngủ ngon chứ?",
+
+  audioIdle:"Chọn một thanh âm để nghe thử",
+  drag:"Kéo để nhìn quanh",
+
+  hE:"Quầy lễ tân", hT:"Tra cứu lưu trú",
+  hH:"Nhập mã Ru của khách để hiện nhịp nghỉ đã chuẩn bị.",
+  hArr:"Đến trong tối nay", hSub:"Hồ sơ Ru đã lưu · chuẩn bị trước khi khách đến",
+  hBack:"Quay lại giao diện khách",
+
+  foot:"Bản mẫu sinh viên cho BUSM4573 Assessment 2, HAN_GROUP 01. Thực hiện cho voco Scenia Bay Nha Trang by IHG. Không phải sản phẩm chính thức của IHG. Màu sắc và kiểu chữ được căn theo thương hiệu, không phải tài sản thương hiệu chính thức. Hương, trà và âm thanh là đề xuất, không phải dịch vụ hiện có của khách sạn."
+};
+
+var VAL={
+  en:{
+    "Soft down":"Soft","Firm support":"Firm support","Neck contour":"Neck support","Cooling gel":"Cool",
+    "Trầm Hương":"Trầm Hương","Hòn Khói salt & driftwood":"Sea salt & wood",
+    "Pomelo & lemongrass":"Pomelo & lemongrass","No fragrance":"No fragrance",
+    "The bay":"The rhythm of the bay","White noise":"A soft floor of sound",
+    "Rain":"Night rain","Silence":"Stillness",
+    "Full blackout":"Closed to the light","A little light":"A little sky",
+    "Lotus heart tea":"Lotus heart tea","Chamomile":"Chamomile","Warm milk":"Warm milk","Nothing":"Nothing",
+    "Sunrise light":"With the sunrise","Curtains only":"The bay","Alarm only":"Alarm only","Don't wake me":"Undisturbed"
+  },
+  vi:{
+    "Soft down":"Êm mềm","Firm support":"Nâng đỡ vững vàng","Neck contour":"Nâng đỡ vùng cổ","Cooling gel":"Mát dịu",
+    "Trầm Hương":"Trầm hương","Hòn Khói salt & driftwood":"Muối biển & gỗ",
+    "Pomelo & lemongrass":"Bưởi & sả","No fragrance":"Không hương",
+    "The bay":"Nhịp của vịnh","White noise":"Khoảng nền êm","Rain":"Mưa đêm","Silence":"Tĩnh lặng",
+    "Full blackout":"Khép trọn ánh sáng","A little light":"Chừa một khoảng trời",
+    "Lotus heart tea":"Trà tâm sen","Chamomile":"Trà hoa cúc","Warm milk":"Sữa ấm","Nothing":"Không cần, cảm ơn",
+    "Sunrise light":"Thức cùng bình minh","Curtains only":"Để vịnh gọi ngày mới",
+    "Alarm only":"Chỉ cần báo thức","Don't wake me":"Cứ để tôi ngủ"
+  }
+};
+
+/* ---------- scent stories ---------- */
+var STORY={
+  en:{
+    "Trầm Hương":["Khánh Hòa and agarwood",
+      "Khánh Hòa has been known for agarwood for generations. The resin forms slowly, deep inside the tree, and the scent has long belonged to ceremony and to quiet hours at home. Because genuine agarwood is rare and costly, we reserve it for our suites."],
+    "Hòn Khói salt & driftwood":["The salt fields at Hòn Khói",
+      "North of the bay, Hòn Khói is one of the province's oldest salt-making areas. The fields are worked at first light, before the heat arrives. This note keeps that hour — mineral, cool, and open."],
+    "Pomelo & lemongrass":["Pomelo leaf and lemongrass",
+      "Pomelo leaves and lemongrass are a familiar pairing in Vietnamese homes — the smell of a kitchen, of washing, of something warm on the stove. It is the lightest of the three, and the easiest on a hot night."],
+    "No fragrance":["Nothing added",
+      "Some rooms are better left alone. The balcony door, the sea air, and the quiet of the north bay are often enough."]
+  },
+  vi:{
+    "Trầm Hương":["Khánh Hòa và trầm hương",
+      "Khánh Hòa gắn với trầm hương qua nhiều thế hệ. Nhựa trầm hình thành chậm rãi trong lòng cây, và hương ấy từ lâu đã thuộc về nghi lễ, về những giờ lặng trong nhà. Vì trầm thật hiếm và đắt, chúng tôi dành riêng hương này cho hạng suite."],
+    "Hòn Khói salt & driftwood":["Ruộng muối Hòn Khói",
+      "Phía bắc vịnh, Hòn Khói là một trong những vùng làm muối lâu đời nhất của tỉnh. Người ta ra đồng từ tờ mờ sáng, trước khi nắng lên. Hương này giữ lại đúng giờ ấy — khoáng, mát và thoáng."],
+    "Pomelo & lemongrass":["Lá bưởi và sả",
+      "Lá bưởi và sả là cặp hương quen thuộc trong nhà người Việt — mùi của gian bếp, của nồi nước gội đầu, của một điều gì đó ấm đang sôi. Nhẹ nhất trong ba hương, và dễ chịu nhất vào đêm nóng."],
+    "No fragrance":["Không thêm gì cả",
+      "Có những căn phòng nên được giữ nguyên. Cánh cửa ban công, hơi biển và sự yên tĩnh của vịnh phía bắc thường đã là đủ."]
+  }
+};
+
+var AUDIO_LABEL={
+  en:{idle:"Choose a sound to hear it now", playing:function(n){return "Playing "+n+" — tap to stop"}, stopped:"Sound stopped — tap a sound to play"},
+  vi:{idle:"Chọn một thanh âm để nghe thử", playing:function(n){return "Đang phát "+n+" — chạm để dừng"}, stopped:"Đã dừng — chạm vào một thanh âm để nghe"}
+};
+
+var PHRASE={
+  en:{
+    none:"Nothing chosen yet", ready:"Ready", saved:"Saved to your Ru",
+    of:function(n){return n+" of 6 chosen"},
+    send:"Prepare my Ru", sent:"Your Ru is being prepared",
+    replyDefault:"Below four stars, a host reaches out the same morning — while you are still with us and the night ahead can still be changed.",
+    replyHigh:"Thank you. Ru has remembered what you like, so your next stay begins with a rest that already feels familiar.",
+    replyLow:"Thank you for telling us. Someone from voco will be in touch this morning to adjust things for tonight."
+  },
+  vi:{
+    none:"Chưa chọn mục nào", ready:"Đã sẵn sàng", saved:"Đã lưu vào Ru của bạn",
+    of:function(n){return "Đã chọn "+n+" trên 6"},
+    send:"Chuẩn bị Ru của tôi", sent:"Ru của bạn đang được chuẩn bị",
+    replyDefault:"Dưới bốn sao, một thành viên của voco sẽ liên hệ ngay trong sáng — khi bạn vẫn còn ở cùng chúng tôi và đêm sau vẫn còn có thể khác đi.",
+    replyHigh:"Cảm ơn bạn. Ru đã ghi nhớ những điều bạn yêu thích, để lần trở lại sau vẫn là một giấc nghỉ thân quen.",
+    replyLow:"Cảm ơn bạn đã cho chúng tôi biết. Một thành viên của voco sẽ liên hệ trong sáng nay để điều chỉnh trải nghiệm cho đêm tiếp theo."
+  }
+};
+
+/* ---------- theme ---------- */
+var theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme', theme);
+  var b = document.getElementById('theme');
+  b.textContent = theme === 'dark' ? '☀' : '☾';
+  b.setAttribute('aria-label', theme === 'dark' ? 'Switch to light' : 'Switch to dark');
+}
+document.getElementById('theme').addEventListener('click', function(){
+  theme = theme === 'dark' ? 'light' : 'dark';
+  applyTheme();
+  if(window.RU3D) pushTo3D();
+});
+
+/* ---------- language ---------- */
+var lang="en", EN={}, sent=false, rating=0;
+document.querySelectorAll('[data-t]').forEach(function(el){ EN[el.dataset.t]=el.innerHTML; });
+
+function label(v){ return v ? (VAL[lang][v]||v) : "—"; }
+
+function applyLang(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-t]').forEach(function(el){
+    var k=el.dataset.t;
+    el.innerHTML = lang==="vi" ? (VI[k]!==undefined?VI[k]:EN[k]) : EN[k];
+  });
+  document.getElementById('lang').textContent = lang==="vi" ? "English" : "Tiếng Việt";
+  var s=document.getElementById('send');
+  s.textContent = sent ? PHRASE[lang].sent : PHRASE[lang].send;
+  setReply(); sync(); fillHost();
+  if(typeof showStory==='function'){
+    showStory();
+    setAudioLabel(playingName ? 'playing' : 'idle');
+  }
+}
+function setReply(){
+  var p=PHRASE[lang];
+  document.getElementById('reply').textContent =
+    rating===0 ? p.replyDefault : (rating>=4 ? p.replyHigh : p.replyLow);
+}
+document.getElementById('lang').addEventListener('click',function(){
+  lang = lang==="en" ? "vi" : "en";
+  applyLang();
+});
+
+/* ---------- night bar ---------- */
+var state={pillow:null,scent:null,sound:null,dark:null,temp:21,tea:null,wake:null};
+var tone="#25302E",darkness=.8,warmth=.35,tex="none";
+var bar=document.getElementById('nightbar');
+var cv=document.getElementById('tex');
+var ctx=cv.getContext('2d');
+
+function hexv(h){
+  if(h.charAt(0)!=='#') return [30,40,38];
+  return [1,3,5].map(function(i){return parseInt(h.substr(i,2),16)});
+}
+function mix(a,b,t){
+  var A=hexv(a),B=hexv(b);
+  return "rgb("+A.map(function(c,i){return Math.round(c+(B[i]-c)*t)}).join(",")+")";
+}
+function shade(d){
+  var v=Math.round(28-(d*20));
+  return "rgb("+v+","+(v+7)+","+(v+9)+")";
+}
+function pushTo3D(){
+  if(window.RU3D) window.RU3D.update({
+    pillow:state.pillow, light:state.dark, tea:state.tea, wake:state.wake,
+    temp:state.temp, tone:tone, darkness:darkness, warmth:warmth,
+    theme:document.documentElement.getAttribute('data-theme')
+  });
+}
+
+function paint(){
+  var evening=mix(tone,"#08161C",.35);
+  var deep=shade(darkness);
+  var dawn=warmth>.7?"#F7B70F":warmth>.3?"#5B6E75":"#31434B";
+  bar.style.background="linear-gradient(90deg,"+evening+" 0%,"+deep+" 42%,"+deep+" 74%,"+dawn+" 100%)";
+  drawTex();
+  pushTo3D();
+}
+function drawTex(){
+  var w=cv.width=cv.offsetWidth*2, h=cv.height=cv.offsetHeight*2;
+  ctx.clearRect(0,0,w,h);
+  if(tex==="none") return;
+  ctx.strokeStyle="rgba(255,255,255,.32)";
+  ctx.fillStyle="rgba(255,255,255,.32)";
+  if(tex==="wave"){
+    ctx.lineWidth=1.4;
+    for(var k=0;k<3;k++){
+      ctx.beginPath();
+      for(var x=0;x<=w;x+=4){
+        var y=h/2+Math.sin((x/w)*Math.PI*6+k*1.4)*(h/7)+(k-1)*h/6;
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+  } else if(tex==="noise"){
+    for(var i=0;i<900;i++){
+      ctx.globalAlpha=Math.random()*.5;
+      ctx.fillRect(Math.random()*w,Math.random()*h,2,2);
+    }
+    ctx.globalAlpha=1;
+  } else if(tex==="rain"){
+    ctx.lineWidth=1;
+    for(var j=0;j<130;j++){
+      var rx=Math.random()*w,ry=Math.random()*h;
+      ctx.beginPath();ctx.moveTo(rx,ry);ctx.lineTo(rx-5,ry+16);ctx.stroke();
+    }
+  }
+}
+
+document.querySelectorAll('.opts').forEach(function(grp){
+  var key=grp.dataset.group;
+  grp.querySelectorAll('.opt').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      grp.querySelectorAll('.opt').forEach(function(b){b.setAttribute('aria-pressed','false')});
+      btn.setAttribute('aria-pressed','true');
+      state[key]=btn.dataset.val;
+      if(btn.dataset.tone) tone=btn.dataset.tone;
+      if(btn.dataset.dark) darkness=parseFloat(btn.dataset.dark);
+      if(btn.dataset.warm) warmth=parseFloat(btn.dataset.warm);
+      if(btn.dataset.tex) tex=btn.dataset.tex;
+      if(key==='scent') showStory();
+      if(key==='sound') playAudio(btn.dataset.audio||null, btn.dataset.val);
+      paint();sync();
+    });
+  });
+});
+
+var temp=document.getElementById('temp');
+temp.addEventListener('input',function(){
+  state.temp=+temp.value;
+  document.getElementById('tempval').textContent=temp.value;
+  sync();
+});
+
+var LISTS={
+  pillow:["Soft down","Firm support","Neck contour","Cooling gel"],
+  scent:["Trầm Hương","Hòn Khói salt & driftwood","Pomelo & lemongrass","No fragrance"],
+  sound:["The bay","White noise","Rain","Silence"],
+  dark:["Full blackout","A little light"],
+  tea:["Lotus heart tea","Chamomile","Warm milk","Nothing"],
+  wake:["Sunrise light","Curtains only","Alarm only","Don't wake me"]
+};
+var ORDER=["pillow","scent","sound","dark","tea","wake"];
+
+function encode(){
+  var n=0;
+  ORDER.forEach(function(k){n=n*LISTS[k].length+Math.max(0,LISTS[k].indexOf(state[k]))});
+  n=n*10+(state.temp-17);
+  return "RU-"+("0000"+n.toString(36).toUpperCase()).slice(-4);
+}
+function decode(str){
+  var raw=String(str).toUpperCase().replace(/[^0-9A-Z]/g,"").replace(/^RU/,"");
+  if(raw.length!==4) return null;
+  var n=parseInt(raw,36);
+  if(isNaN(n)) return null;
+  var out={temp:(n%10)+17};
+  n=Math.floor(n/10);
+  for(var i=ORDER.length-1;i>=0;i--){
+    var list=LISTS[ORDER[i]];
+    out[ORDER[i]]=list[n%list.length];
+    n=Math.floor(n/list.length);
+  }
+  return n===0?out:null;
+}
+
+function sync(){
+  ORDER.forEach(function(k){
+    document.querySelector('[data-slot="'+k+'"]').textContent=label(state[k]);
+  });
+  document.querySelector('[data-slot="temp"]').textContent=state.temp+"°C";
+  var done=ORDER.filter(function(k){return state[k]}).length;
+  var p=PHRASE[lang];
+  document.getElementById('progress').textContent =
+    sent ? p.saved : (done===6 ? p.ready : (done===0 ? p.none : p.of(done)));
+  document.getElementById('send').disabled = sent || done!==6;
+}
+
+document.getElementById('send').addEventListener('click',function(){
+  sent=true;
+  this.textContent=PHRASE[lang].sent;
+  this.disabled=true;
+  document.getElementById('codeout').textContent=encode();
+  document.getElementById('codecard').classList.add('on');
+  document.getElementById('morning').classList.add('on');
+  document.getElementById('codecard').scrollIntoView({block:'center'});
+  sync();
+});
+
+document.querySelectorAll('.star').forEach(function(s){
+  s.addEventListener('click',function(){
+    rating=+s.dataset.n;
+    document.querySelectorAll('.star').forEach(function(x){
+      x.classList.toggle('lit',+x.dataset.n<=rating);
+    });
+    setReply();
+  });
+});
+
+/* ---------- scent story ---------- */
+function showStory(){
+  var box=document.getElementById('story');
+  var pack=STORY[lang][state.scent];
+  if(!pack){ box.classList.remove('on'); return; }
+  document.getElementById('storyTitle').textContent=pack[0];
+  document.getElementById('storyText').textContent=pack[1];
+  box.classList.add('on');
+}
+
+/* ---------- ambient audio ---------- */
+var player=new Audio();
+player.loop=true;
+player.volume=0.55;
+var playingName=null;
+var noteEl=document.getElementById('audioNote');
+var noteLabel=document.getElementById('audioLabel');
+
+function setAudioLabel(kind){
+  var L=AUDIO_LABEL[lang];
+  if(kind==='playing'){ noteLabel.textContent=L.playing(label(playingName)); noteEl.classList.add('playing'); }
+  else if(kind==='stopped'){ noteLabel.textContent=L.stopped; noteEl.classList.remove('playing'); }
+  else { noteLabel.textContent=L.idle; noteEl.classList.remove('playing'); }
+}
+
+function playAudio(file,name){
+  if(!file){ stopAudio(); return; }
+  playingName=name;
+  player.src=file;
+  player.play().then(function(){ setAudioLabel('playing'); })
+               .catch(function(){ setAudioLabel('stopped'); });
+}
+function stopAudio(){
+  player.pause(); player.currentTime=0; playingName=null; setAudioLabel('stopped');
+}
+noteEl.addEventListener('click',function(){
+  if(playingName){ stopAudio(); }
+  else {
+    var sel=document.querySelector('.opts[data-group="sound"] .opt[aria-pressed="true"]');
+    if(sel && sel.dataset.audio) playAudio(sel.dataset.audio, sel.dataset.val);
+  }
+});
+
+var lastLookup=null;
+function fillHost(){
+  if(!lastLookup) return;
+  ORDER.forEach(function(k){
+    document.querySelector('[data-h="'+k+'"]').textContent=label(lastLookup[k]);
+  });
+  document.querySelector('[data-h="temp"]').textContent=lastLookup.temp+"°C";
+}
+var hostIn=document.getElementById('hostcode');
+hostIn.addEventListener('input',function(){
+  var got=decode(hostIn.value);
+  var sheet=document.getElementById('hostsheet');
+  if(!got){lastLookup=null;sheet.classList.remove('on');return;}
+  lastLookup=got; fillHost(); sheet.classList.add('on');
+});
+
+function route(){
+  document.body.classList.toggle('host-mode',location.hash==='#desk');
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+window.addEventListener('resize',drawTex);
+
+route();applyTheme();paint();applyLang();
+})();
+</script>
+
+<script type="module">
+/* ---------------------------------------------------------
+   Ru — 3D room preview.
+   Loads Three.js from a CDN. If that fails for any reason
+   (blocked network, offline venue), nothing breaks: the
+   night bar stays visible and the page works exactly as before.
+----------------------------------------------------------*/
+(async function(){
+  let THREE;
+  try{
+    THREE = await import('https://unpkg.com/three@0.160.0/build/three.module.js');
+  }catch(e){
+    console.warn('Three.js unavailable — night bar fallback in use.');
+    return;
+  }
+
+  const holder = document.getElementById('room');
+  const cv = document.getElementById('roomcv');
+  const fallback = document.getElementById('nightbar');
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, 2, 0.1, 100);
+  const renderer = new THREE.WebGLRenderer({canvas:cv, antialias:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+
+  const pivot = new THREE.Group();
+  scene.add(pivot);
+
+  const M = (c,r)=>new THREE.MeshStandardMaterial({color:c,roughness:r===undefined?.85:r});
+
+  /* ---- room shell ---- */
+  const floorMat = M(0xBFAE97,.95);
+  const wallMat  = M(0xE6DCCF,1);
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(14,14), floorMat);
+  floor.rotation.x = -Math.PI/2; pivot.add(floor);
+
+  const backWall = new THREE.Mesh(new THREE.PlaneGeometry(14,7), wallMat);
+  backWall.position.set(0,3.5,-3.6); pivot.add(backWall);
+
+  const sideWall = new THREE.Mesh(new THREE.PlaneGeometry(8,7), wallMat);
+  sideWall.rotation.y = Math.PI/2; sideWall.position.set(-4.4,3.5,0); pivot.add(sideWall);
+
+  /* ---- window: the night gradient lives here ---- */
+  const winMat = new THREE.MeshBasicMaterial({color:0x14323F});
+  const win = new THREE.Mesh(new THREE.PlaneGeometry(4.4,2.6), winMat);
+  win.rotation.y = Math.PI/2; win.position.set(-4.36,2.5,0.2); pivot.add(win);
+  const frameMat = M(0x4A4239,.6);
+  const frame = new THREE.Mesh(new THREE.BoxGeometry(.12,3.0,4.8), frameMat);
+  frame.position.set(-4.38,2.5,0.2); pivot.add(frame);
+
+  /* ---- curtains (they move with the light choice) ---- */
+  const curtainMat = M(0xD9CDBB,1);
+  const curtainL = new THREE.Mesh(new THREE.BoxGeometry(.1,3.1,1.2), curtainMat);
+  const curtainR = new THREE.Mesh(new THREE.BoxGeometry(.1,3.1,1.2), curtainMat);
+  curtainL.position.set(-4.28,2.5,-1.5); curtainR.position.set(-4.28,2.5,1.9);
+  pivot.add(curtainL, curtainR);
+
+  /* ---- bed ---- */
+  const bed = new THREE.Group(); bed.position.set(.6,0,0); pivot.add(bed);
+  const base = new THREE.Mesh(new THREE.BoxGeometry(3.4,.55,4.6), M(0x3B2E24,.7));
+  base.position.y=.28; bed.add(base);
+  const mattress = new THREE.Mesh(new THREE.BoxGeometry(3.2,.45,4.4), M(0xF2EDE4,.95));
+  mattress.position.y=.78; bed.add(mattress);
+  const duvet = new THREE.Mesh(new THREE.BoxGeometry(3.26,.22,3.0), M(0xEDE4D6,1));
+  duvet.position.set(0,1.02,.55); bed.add(duvet);
+  const runner = new THREE.Mesh(new THREE.BoxGeometry(3.3,.06,.9), M(0x1E5566,.8));
+  runner.position.set(0,1.15,1.35); bed.add(runner);
+  const head = new THREE.Mesh(new THREE.BoxGeometry(3.5,1.9,.22), M(0x2E241C,.75));
+  head.position.set(0,1.2,-2.3); bed.add(head);
+
+  const pillows = new THREE.Group(); pillows.position.set(0,1.06,-1.55); bed.add(pillows);
+
+  /* ---- nightstand, lamp, cup ---- */
+  const stand = new THREE.Mesh(new THREE.BoxGeometry(1.0,.85,1.0), M(0x3B2E24,.7));
+  stand.position.set(2.9,.42,-1.9); pivot.add(stand);
+  const lampShade = new THREE.Mesh(new THREE.ConeGeometry(.34,.5,24,1,true),
+    new THREE.MeshStandardMaterial({color:0xF6EBD6,emissive:0xF7B70F,emissiveIntensity:0,side:THREE.DoubleSide}));
+  lampShade.position.set(2.9,1.3,-1.9); pivot.add(lampShade);
+  const cup = new THREE.Mesh(new THREE.CylinderGeometry(.14,.11,.2,18), M(0xFAF6EF,.5));
+  cup.position.set(2.6,.95,-1.6); cup.visible=false; pivot.add(cup);
+
+  /* ---- scent drift ---- */
+  const N=140, pos=new Float32Array(N*3);
+  for(let i=0;i<N;i++){ pos[i*3]=(Math.random()-.5)*8; pos[i*3+1]=Math.random()*4.5; pos[i*3+2]=(Math.random()-.5)*6; }
+  const pGeo=new THREE.BufferGeometry(); pGeo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const pMat=new THREE.PointsMaterial({color:0xffffff,size:.06,transparent:true,opacity:0,depthWrite:false});
+  const dust=new THREE.Points(pGeo,pMat); pivot.add(dust);
+
+  /* ---- lights ---- */
+  const amb = new THREE.AmbientLight(0xffffff,.9); scene.add(amb);
+  const key = new THREE.DirectionalLight(0xffffff,1.1); key.position.set(-5,5,3); scene.add(key);
+  const lamp = new THREE.PointLight(0xF7B70F,0,7,2); lamp.position.set(2.9,1.35,-1.9); scene.add(lamp);
+
+  camera.position.set(6.4,3.9,6.6);
+  camera.lookAt(0,1.3,0);
+
+  /* ---- pillow shapes ---- */
+  function setPillows(kind){
+    while(pillows.children.length){ const o=pillows.children[0]; pillows.remove(o); o.geometry.dispose(); o.material.dispose(); }
+    let geo, mat;
+    if(kind==='Neck contour'){
+      geo=new THREE.CylinderGeometry(.3,.3,1.3,20); geo.rotateZ(Math.PI/2);
+      mat=M(0xE8E2D6,.85);
+    }else if(kind==='Cooling gel'){
+      geo=new THREE.BoxGeometry(1.35,.3,.85); mat=M(0xCDE7EC,.35);
+    }else if(kind==='Firm support'){
+      geo=new THREE.BoxGeometry(1.35,.34,.8); mat=M(0xF4EFE6,.9);
+    }else{ /* soft down, and the default before a choice */
+      geo=new THREE.BoxGeometry(1.4,.42,.95); mat=M(0xFBF7F0,.98);
+    }
+    for(const x of [-.78,.78]){
+      const m=new THREE.Mesh(geo,mat); m.position.x=x; pillows.add(m);
+    }
+  }
+  setPillows(null);
+
+  /* ---- state ---- */
+  let target = {win:0x14323F, amb:.9, lampI:0, lampE:0, dust:0, dustC:0xffffff,
+                wall:0xE6DCCF, curtain:0, cup:false};
+  const lerpC = (mat,hex,t)=>mat.color.lerp(new THREE.Color(hex),t);
+
+  window.RU3D = { update(s){
+    setPillows(s.pillow);
+
+    // window + light
+    if(s.light==='Full blackout'){ target.win=0x0A1216; target.amb=.42; target.curtain=0; }
+    else if(s.light==='A little light'){ target.win=0x2E5C6E; target.amb=.75; target.curtain=.9; }
+    else { target.win=0x1E4655; target.amb=.7; target.curtain=.5; }
+
+    // morning choice warms the lamp
+    if(s.wake==='Sunrise light'){ target.lampI=2.4; target.lampE=1.2; target.win=0xF0A648; target.amb=1.15; }
+    else if(s.wake==='Curtains only'){ target.lampI=0; target.lampE=0; target.curtain=1.6; }
+    else { target.lampI=.5; target.lampE=.25; }
+
+    // temperature tints the walls
+    const t=s.temp||21;
+    target.wall = t<21 ? 0xD9E4E6 : (t>21 ? 0xEFE0CC : 0xE6DCCF);
+
+    // scent drifts through the room, tinted by the note chosen
+    if(s.tone && s.tone!=='#25302E'){ target.dust=.45; target.dustC=parseInt(s.tone.slice(1),16); }
+    else { target.dust=0; }
+
+    target.cup = !!(s.tea && s.tea!=='Nothing');
+
+    // page theme drives the background behind the room
+    scene.background = new THREE.Color(s.theme==='dark' ? 0x0B1418 : 0xF3EFE8);
+  }};
+
+  /* ---- drag to look around ---- */
+  let dragging=false, lastX=0, spin=0, idle=true;
+  const down=e=>{dragging=true; idle=false; lastX=(e.touches?e.touches[0].clientX:e.clientX);};
+  const move=e=>{ if(!dragging) return;
+    const x=(e.touches?e.touches[0].clientX:e.clientX);
+    spin += (x-lastX)*0.006; lastX=x;
+    spin=Math.max(-0.9,Math.min(0.9,spin));
+  };
+  const up=()=>{dragging=false;};
+  holder.addEventListener('mousedown',down); holder.addEventListener('touchstart',down,{passive:true});
+  window.addEventListener('mousemove',move); window.addEventListener('touchmove',move,{passive:true});
+  window.addEventListener('mouseup',up); window.addEventListener('touchend',up);
+
+  function size(){
+    const w=holder.clientWidth, h=holder.clientHeight;
+    renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize',size);
+
+  let t0=0;
+  function loop(t){
+    requestAnimationFrame(loop);
+    const drift = idle ? Math.sin(t/6000)*0.18 : 0;
+    pivot.rotation.y += ((spin+drift) - pivot.rotation.y)*0.07;
+
+    lerpC(winMat, target.win, .07);
+    lerpC(wallMat, target.wall, .05);
+    amb.intensity += (target.amb - amb.intensity)*.07;
+    lamp.intensity += (target.lampI - lamp.intensity)*.07;
+    lampShade.material.emissiveIntensity += (target.lampE - lampShade.material.emissiveIntensity)*.07;
+    pMat.opacity += (target.dust - pMat.opacity)*.05;
+    pMat.color.lerp(new THREE.Color(target.dustC), .05);
+    curtainL.position.z += ((-1.5 - target.curtain) - curtainL.position.z)*.06;
+    curtainR.position.z += ((1.9 + target.curtain) - curtainR.position.z)*.06;
+    cup.visible = target.cup;
+
+    const a=dust.geometry.attributes.position.array;
+    for(let i=1;i<a.length;i+=3){ a[i]+=0.004; if(a[i]>5) a[i]=0; }
+    dust.geometry.attributes.position.needsUpdate=true;
+
+    renderer.render(scene,camera);
+  }
+
+  // everything built — switch from the night bar to the room
+  document.body.classList.add('has3d');
+  holder.classList.add('on');
+  size();
+  scene.background = new THREE.Color(
+    document.documentElement.getAttribute('data-theme')==='dark' ? 0x0B1418 : 0xF3EFE8);
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
