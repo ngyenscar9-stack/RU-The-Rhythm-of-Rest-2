@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ru. — The Rhythm of Rest | voco Scenia Bay Nha Trang</title>
+<title>Ru — the rhythm of rest | voco Scenia Bay Nha Trang</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="theme-color" content="#F7B70F">
@@ -20,7 +20,7 @@
     --gold-text:#8A6100;  /* gold that is readable as text */
     --sel:#FBF1DA;        /* chosen option fill */
     --on-gold:#000000;    /* text sitting ON gold — always black */
-    --sea-deep:#0F3B4C;   /* headings, "Ru.", summary header */
+    --sea-deep:#0F3B4C;   /* headings, "Ru", summary header */
     --sea:#2C7186;        /* accents */
     --sea-wash:#EDF4F6;   /* selected option, morning card */
     --line:#DCE6EA;       /* borders */
@@ -255,6 +255,35 @@
     display:block;line-height:1.65;max-width:36ch;margin:0 auto;
   }
 
+  .subrow{display:none;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .subrow.on{display:flex;animation:rise 450ms cubic-bezier(.2,.7,.3,1)}
+  .chip{
+    all:unset;cursor:pointer;padding:8px 16px;border:1px solid var(--line);
+    border-radius:30px;font-size:13.5px;color:var(--grey);background:var(--card);
+    transition:border-color 200ms,color 200ms,background 200ms;
+  }
+  .chip:hover{border-color:var(--gold)}
+  .chip:focus-visible{outline:2px solid var(--gold-text);outline-offset:2px}
+  .chip[aria-pressed="true"]{background:var(--sel);border-color:var(--gold);color:var(--gold-text);font-weight:600}
+
+  .notewrap{display:none;margin-top:12px}
+  .notewrap.on{display:block;animation:rise 450ms cubic-bezier(.2,.7,.3,1)}
+  .notewrap label{
+    display:block;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--grey);font-weight:500;margin-bottom:7px;
+  }
+  #note{
+    width:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);
+    border-radius:3px;padding:12px 14px;font-family:var(--serif);font-size:14.5px;
+    color:var(--black);line-height:1.6;resize:vertical;
+  }
+  #note:focus{outline:none;border-color:var(--gold)}
+  .confirmline{
+    display:none;margin-top:11px;font-family:var(--serif);font-size:14px;
+    color:var(--grey);border-left:3px solid var(--gold);padding-left:12px;
+  }
+  .confirmline.on{display:block;animation:rise 450ms cubic-bezier(.2,.7,.3,1)}
+
   /* scent story */
   .story{
     display:none;margin-top:10px;border-left:3px solid var(--gold);
@@ -331,17 +360,6 @@
     color:var(--grey);font-size:12.5px;line-height:1.8;
   }
   footer b{color:var(--black);font-weight:500}
-  .credits {
-  display: block;
-  margin-top: 10px;
-}
-
-.prototype-credit {
-  display: block;
-  margin-top: 8px;
-  font-size: 0.75rem;
-  opacity: 0.65;
-}
 
   @media (max-width:520px){
     .opts.two{grid-template-columns:1fr}
@@ -384,8 +402,8 @@
 
 <header>
   <p class="eyebrow" data-t="eyebrow">Me time &nbsp;·&nbsp; before you arrive</p>
-  <h1>Ru.</h1>
-  <p class="lockup" data-t="lockup">The Rhythm of Rest</p>
+  <h1>Ru</h1>
+  <p class="lockup" data-t="lockup">the rhythm of rest</p>
   <p class="gloss" data-t="gloss">
     <b>Ru</b> is a Vietnamese word for the gentle act of lulling someone to rest — through rhythm,
     sound and quiet comfort.
@@ -421,17 +439,17 @@
   <div class="q-head"><span class="qnum">02</span><h2 data-t="q2">Choose a scent of the coast</h2></div>
   <p class="q-note" data-t="q2n">Three notes drawn from Khánh Hòa, placed lightly in the room with a small card telling you where each one begins.</p>
   <div class="opts" data-group="scent">
-    <button class="opt" aria-pressed="false" data-val="Trầm Hương" data-tone="#3E2E1C">
+    <button class="opt" aria-pressed="false" data-val="Trầm Hương" data-tone="#C87A2E">
       <span class="opt-name"><span data-t="s1">Agarwood</span> <span class="tierflag" data-t="tier">Suite</span></span>
       <span class="opt-vn" data-t="s1v">Trầm Hương</span>
       <span class="opt-desc" data-t="s1d">Warm, deep and quiet. From a province long associated with agarwood — a warm note for the close of the day.</span>
     </button>
-    <button class="opt" aria-pressed="false" data-val="Hòn Khói salt &amp; driftwood" data-tone="#2A3B44">
+    <button class="opt" aria-pressed="false" data-val="Hòn Khói salt &amp; driftwood" data-tone="#9DC6D8">
       <span class="opt-name" data-t="s2">Sea salt &amp; wood</span>
       <span class="opt-vn" data-t="s2v">Hòn Khói</span>
       <span class="opt-desc" data-t="s2d">Clear and open, carrying the faint salt of the fields north of Khánh Hòa.</span>
     </button>
-    <button class="opt" aria-pressed="false" data-val="Pomelo &amp; lemongrass" data-tone="#33421F">
+    <button class="opt" aria-pressed="false" data-val="Pomelo &amp; lemongrass" data-tone="#B9C766">
       <span class="opt-name" data-t="s3">Pomelo &amp; lemongrass</span>
       <span class="opt-vn" data-t="s3v">Bưởi &amp; Sả</span>
       <span class="opt-desc" data-t="s3d">Light and fresh — a soft green space for tropical nights.</span>
@@ -495,23 +513,28 @@
   <div class="q-head"><span class="qnum">05</span><h2 data-t="q5">Something before you rest?</h2></div>
   <p class="q-note" data-t="q5n">A small drink waiting by the bed as night falls.</p>
   <div class="opts two" data-group="tea">
-    <button class="opt" aria-pressed="false" data-val="Lotus heart tea">
-      <span class="opt-name" data-t="t1">Lotus heart tea</span>
-      <span class="opt-vn" data-t="t1v">Trà tâm sen</span>
-      <span class="opt-desc" data-t="t1d">A clean, gently bitter note, familiar in Vietnamese tea culture.</span>
-    </button>
-    <button class="opt" aria-pressed="false" data-val="Chamomile">
-      <span class="opt-name" data-t="t2">Chamomile</span>
-      <span class="opt-desc" data-t="t2d">Soft, mild and familiar.</span>
+    <button class="opt" aria-pressed="false" data-val="Lotus heart tea" data-tea="herbal">
+      <span class="opt-name" data-t="t1">Herbal tea selection</span>
+      <span class="opt-vn" data-t="t1v">Tâm sen · Hoa cúc</span>
+      <span class="opt-desc" data-t="t1d">Choose between the gently bitter note of Vietnamese lotus heart tea and soft, floral chamomile.</span>
     </button>
     <button class="opt" aria-pressed="false" data-val="Warm milk">
       <span class="opt-name" data-t="t3">Warm milk</span>
-      <span class="opt-desc" data-t="t3d">Brought up at a time you choose.</span>
+      <span class="opt-desc" data-t="t3d">A familiar comfort, brought up at the time you choose.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="A glass of wine">
+      <span class="opt-name" data-t="t5">A glass of wine</span>
+      <span class="opt-vn" data-t="t5v">Red · White · Sparkling</span>
+      <span class="opt-desc" data-t="t5d">A selected pour from the hotel's evening wine list.</span>
     </button>
     <button class="opt" aria-pressed="false" data-val="Nothing">
       <span class="opt-name" data-t="t4">No, thank you</span>
       <span class="opt-desc" data-t="t4d">The bedside kept clear.</span>
     </button>
+  </div>
+  <div class="subrow" id="teaSub">
+    <button class="chip" type="button" data-sub="Lotus heart tea" data-t="sub1">Lotus heart</button>
+    <button class="chip" type="button" data-sub="Chamomile" data-t="sub2">Chamomile</button>
   </div>
 </section>
 
@@ -539,6 +562,43 @@
 </section>
 
 <section>
+  <div class="q-head"><span class="qnum">07</span><h2 data-t="q7">A little something more?</h2></div>
+  <p class="q-note" data-t="q7n">We can add a thoughtful touch to the room, or simply leave everything exactly as you chose it.</p>
+  <div class="opts two" data-group="occasion">
+    <button class="opt" aria-pressed="false" data-val="Birthday">
+      <span class="opt-name" data-t="o1">Birthday</span>
+      <span class="opt-desc" data-t="o1d">A small cake waiting in the room.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Anniversary">
+      <span class="opt-name" data-t="o2">Anniversary</span>
+      <span class="opt-desc" data-t="o2d">A subtle celebratory touch, prepared before you arrive.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Proposal">
+      <span class="opt-name" data-t="o3">Proposal</span>
+      <span class="opt-desc" data-t="o3d">Tell us what you have planned and our team will prepare the details with you.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Honeymoon">
+      <span class="opt-name" data-t="o4">Honeymoon or newlyweds</span>
+      <span class="opt-desc" data-t="o4d">A warm welcome for the beginning of your stay together.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Something else">
+      <span class="opt-name" data-t="o5">Something else</span>
+      <span class="opt-desc" data-t="o5d">Anything that would make the room feel more yours.</span>
+    </button>
+    <button class="opt" aria-pressed="false" data-val="Nothing extra">
+      <span class="opt-name" data-t="o6">Nothing extra</span>
+      <span class="opt-desc" data-t="o6d">Keep my Ru exactly as selected.</span>
+    </button>
+  </div>
+  <div class="notewrap" id="noteWrap">
+    <label for="note" data-t="noteLabel">Tell us more</label>
+    <textarea id="note" rows="3" maxlength="300" data-t-ph="notePh"
+      placeholder="Share a note, a celebration detail, or anything else our team should know."></textarea>
+  </div>
+  <p class="confirmline" id="confirmLine" data-t="confirm">Our team will be in touch before you arrive to confirm the details.</p>
+</section>
+
+<section>
   <div class="summary">
     <div class="summary-top">
       <p class="summary-title" data-t="sumT">Your own rhythm of rest</p>
@@ -552,6 +612,7 @@
       <div class="row"><dt data-t="lTemp">Temperature</dt><dd data-slot="temp">21°C</dd></div>
       <div class="row"><dt data-t="lTurn">Evening ritual</dt><dd data-slot="tea">—</dd></div>
       <div class="row"><dt data-t="lMorn">Morning</dt><dd data-slot="wake">—</dd></div>
+      <div class="row"><dt data-t="lOcc">Occasion</dt><dd data-slot="occasion">—</dd></div>
     </dl>
   </div>
 
@@ -598,37 +659,18 @@
       <div class="row"><dt data-t="lTemp">Temperature</dt><dd data-h="temp">—</dd></div>
       <div class="row"><dt data-t="lTurn">Evening ritual</dt><dd data-h="tea">—</dd></div>
       <div class="row"><dt data-t="lMorn">Morning</dt><dd data-h="wake">—</dd></div>
+      <div class="row"><dt data-t="lOcc">Occasion</dt><dd data-h="occasion">—</dd></div>
     </dl>
   </div>
   <a class="host-exit" href="#" data-t="hBack">Back to the guest view</a>
 </div>
 
 <footer>
-<b>Ru — The Rhythm of Rest.</b>
-
-<span class="addr">
-voco Scenia Bay Nha Trang by IHG · Tower A, 25–26 Phạm Văn Đồng,
-Nha Trang, Khánh Hòa
-</span>
-
-<span data-t="foot">
-Student prototype developed by HAN_GROUP 01 for BUSM4573 Assessment 2.
-Prepared for voco Scenia Bay Nha Trang by IHG.
-Not an official IHG product. Proposed features shown are conceptual
-and do not represent current hotel offerings.
-</span>
-
-<span class="credits">
-HAN_GROUP 01 – Team 1 ·
-Nguyen Huyen Anh (S4141771) ·
-Pham Thanh Lan (S4054062) ·
-Bui Thai Bao Minh (S4186438) ·
-Le Khanh Linh (S4027640)
-</span>
-
-<span class="prototype-credit" data-t="prototypeCredit">
-Digital experience prototype lead: Nguyen Huyen Anh (Scarlett) · S4141771
-</span>
+  <b>Ru — the rhythm of rest.</b>
+  <span class="addr">voco Scenia Bay Nha Trang by IHG · Tower A, 25–26 Phạm Văn Đồng, Nha Trang, Khánh Hòa</span>
+  <span data-t="foot">Student prototype for BUSM4573 Assessment 2, HAN_GROUP 01.
+  Prepared for voco Scenia Bay Nha Trang by IHG. Not an official IHG product. Colours and type are brand-aligned,
+  not official brand assets. Scent, tea and sound details are proposals, not current hotel offerings.</span>
 </footer>
 
 </div>
@@ -639,7 +681,7 @@ Digital experience prototype lead: Nguyen Huyen Anh (Scarlett) · S4141771
 var VI={
   mEve:"Chiều tối", mDeep:"Đêm khuya", mMorn:"Buổi sáng",
   eyebrow:"Me time &nbsp;·&nbsp; trước khi bạn đến",
-  lockup:"Nhịp Riêng của Giấc Nghỉ",
+  lockup:"nhịp riêng của giấc nghỉ",
   gloss:"<b>Ru</b> — một tiếng Việt thật dịu. Là lời hát khe khẽ, là nhịp đưa chậm rãi, là cách một ngày dài dần lắng xuống trước khi giấc ngủ bắt đầu."
     +"<span>Tại voco Scenia Bay Nha Trang, Ru được kể lại theo một cách mới: một nhịp nghỉ được chuẩn bị riêng cho bạn.</span>",
 
@@ -647,7 +689,7 @@ var VI={
   q1n:"Êm mềm, vững chắc hay mát dịu — hãy chọn cảm giác bạn muốn mang theo vào giấc ngủ.",
   p1:"Êm mềm", p1d:"Gối lông vũ ôm nhẹ theo đầu và vai.",
   p2:"Nâng đỡ vững vàng", p2d:"Giữ độ cao ổn định suốt đêm.",
-  p3:"Nâng đỡ vùng cổ", p3d:"Memory foam định hình, nâng đỡ nhẹ nhàng sau một hành trình dài.",
+  p3:"Gối công thái học (cao su)", p3d:"Định hình theo đường cong của cổ, nâng đỡ nhẹ nhàng sau một hành trình dài.",
   p4:"Mát dịu", p4d:"Bề mặt gel mát, dễ chịu trong khí hậu biển Nha Trang.",
 
   q2:"Chọn một hương của miền biển",
@@ -677,10 +719,27 @@ var VI={
 
   q5:"Một chút trước giờ nghỉ?",
   q5n:"Một thức uống nhỏ chờ bên giường khi đêm xuống.",
-  t1:"Trà tâm sen", t1v:"", t1d:"Vị đắng thanh đặc trưng, quen thuộc trong văn hóa thưởng trà Việt.",
-  t2:"Trà hoa cúc", t2d:"Nhẹ nhàng, thanh dịu và quen thuộc.",
-  t3:"Sữa ấm", t3d:"Được mang đến vào thời gian bạn lựa chọn.",
+  t1:"Trà thảo mộc", t1v:"Tâm sen · Hoa cúc",
+  t1d:"Chọn giữa vị đắng thanh của trà tâm sen và hương hoa cúc dịu nhẹ.",
+  sub1:"Tâm sen", sub2:"Hoa cúc",
+  t3:"Sữa ấm", t3d:"Một vị quen thuộc, được mang lên vào giờ bạn chọn.",
+  t5:"Một ly vang", t5v:"Vang đỏ · Vang trắng · Vang sủi",
+  t5d:"Một ly được chọn từ danh mục vang buổi tối của khách sạn.",
   t4:"Không cần, cảm ơn", t4d:"Giữ không gian đầu giường gọn và nguyên bản.",
+
+  q7:"Còn điều gì nữa không?",
+  q7n:"Chúng tôi có thể thêm một chút chu đáo cho căn phòng, hoặc giữ nguyên đúng những gì bạn đã chọn.",
+  o1:"Sinh nhật", o1d:"Một chiếc bánh nhỏ chờ sẵn trong phòng.",
+  o2:"Kỷ niệm", o2d:"Một dấu chúc mừng nhẹ nhàng, chuẩn bị trước khi bạn đến.",
+  o3:"Lời cầu hôn", o3d:"Hãy cho chúng tôi biết bạn dự định thế nào, đội ngũ sẽ cùng bạn chuẩn bị.",
+  o4:"Tuần trăng mật", o4d:"Một lời chào ấm áp cho khởi đầu của hai người.",
+  o5:"Điều gì khác", o5d:"Bất cứ điều gì khiến căn phòng thân thuộc hơn với bạn.",
+  o6:"Không cần thêm", o6d:"Giữ đúng Ru như tôi đã chọn.",
+  noteLabel:"Cho chúng tôi biết thêm",
+  notePh:"Một lời nhắn, một dịp đặc biệt, hay bất cứ điều gì đội ngũ nên biết.",
+  confirm:"Đội ngũ của chúng tôi sẽ liên hệ trước khi bạn đến để xác nhận chi tiết.",
+  lOcc:"Dịp đặc biệt",
+  drag:"Kéo để nhìn quanh",
 
   q6:"Bạn muốn đón ngày mới thế nào?",
   q6n:"Phía Đông mở ra vịnh biển. Mỗi sớm ở Scenia Bay bắt đầu cùng ánh sáng đầu tiên trên vịnh.",
@@ -700,16 +759,14 @@ var VI={
   mAsk:"Đêm qua, bạn ngủ ngon chứ?",
 
   audioIdle:"Chọn một thanh âm để nghe thử",
-  drag:"Kéo để nhìn quanh",
 
   hE:"Quầy lễ tân", hT:"Tra cứu lưu trú",
   hH:"Nhập mã Ru của khách để hiện nhịp nghỉ đã chuẩn bị.",
   hArr:"Đến trong tối nay", hSub:"Hồ sơ Ru đã lưu · chuẩn bị trước khi khách đến",
   hBack:"Quay lại giao diện khách",
 
-  foot:"Bản mẫu sinh viên được phát triển bởi HAN_GROUP 01 cho BUSM4573 Assessment 2. Thực hiện cho voco Scenia Bay Nha Trang by IHG. Đây không phải sản phẩm chính thức của IHG. Các tính năng được giới thiệu là đề xuất và chưa phải dịch vụ hiện hành của khách sạn."
+  foot:"Bản mẫu sinh viên cho BUSM4573 Assessment 2, HAN_GROUP 01. Thực hiện cho voco Scenia Bay Nha Trang by IHG. Không phải sản phẩm chính thức của IHG. Màu sắc và kiểu chữ được căn theo thương hiệu, không phải tài sản thương hiệu chính thức. Hương, trà và âm thanh là đề xuất, không phải dịch vụ hiện có của khách sạn."
 };
-  prototypeCredit: "Phụ trách phát triển nguyên mẫu trải nghiệm số: Nguyen Huyen Anh (Scarlett) · S4141771"
 
 var VAL={
   en:{
@@ -719,7 +776,10 @@ var VAL={
     "The bay":"The rhythm of the bay","White noise":"A soft floor of sound",
     "Rain":"Night rain","Silence":"Stillness",
     "Full blackout":"Closed to the light","A little light":"A little sky",
-    "Lotus heart tea":"Lotus heart tea","Chamomile":"Chamomile","Warm milk":"Warm milk","Nothing":"Nothing",
+    "Lotus heart tea":"Lotus heart tea","Chamomile":"Chamomile","Warm milk":"Warm milk",
+    "A glass of wine":"A glass of wine","Nothing":"Nothing",
+    "Birthday":"Birthday","Anniversary":"Anniversary","Proposal":"Proposal",
+    "Honeymoon":"Honeymoon","Something else":"Noted for our team","Nothing extra":"Nothing extra",
     "Sunrise light":"With the sunrise","Curtains only":"The bay","Alarm only":"Alarm only","Don't wake me":"Undisturbed"
   },
   vi:{
@@ -728,7 +788,10 @@ var VAL={
     "Pomelo & lemongrass":"Bưởi & sả","No fragrance":"Không hương",
     "The bay":"Nhịp của vịnh","White noise":"Khoảng nền êm","Rain":"Mưa đêm","Silence":"Tĩnh lặng",
     "Full blackout":"Khép trọn ánh sáng","A little light":"Chừa một khoảng trời",
-    "Lotus heart tea":"Trà tâm sen","Chamomile":"Trà hoa cúc","Warm milk":"Sữa ấm","Nothing":"Không cần, cảm ơn",
+    "Lotus heart tea":"Trà tâm sen","Chamomile":"Trà hoa cúc","Warm milk":"Sữa ấm",
+    "A glass of wine":"Một ly vang","Nothing":"Không cần, cảm ơn",
+    "Birthday":"Sinh nhật","Anniversary":"Kỷ niệm","Proposal":"Lời cầu hôn",
+    "Honeymoon":"Tuần trăng mật","Something else":"Đã ghi nhận","Nothing extra":"Không cần thêm",
     "Sunrise light":"Thức cùng bình minh","Curtains only":"Để vịnh gọi ngày mới",
     "Alarm only":"Chỉ cần báo thức","Don't wake me":"Cứ để tôi ngủ"
   }
@@ -766,7 +829,7 @@ var AUDIO_LABEL={
 var PHRASE={
   en:{
     none:"Nothing chosen yet", ready:"Ready", saved:"Saved to your Ru",
-    of:function(n){return n+" of 6 chosen"},
+    of:function(n){return n+" of 7 chosen"},
     send:"Prepare my Ru", sent:"Your Ru is being prepared",
     replyDefault:"Below four stars, a host reaches out the same morning — while you are still with us and the night ahead can still be changed.",
     replyHigh:"Thank you. Ru has remembered what you like, so your next stay begins with a rest that already feels familiar.",
@@ -774,7 +837,7 @@ var PHRASE={
   },
   vi:{
     none:"Chưa chọn mục nào", ready:"Đã sẵn sàng", saved:"Đã lưu vào Ru của bạn",
-    of:function(n){return "Đã chọn "+n+" trên 6"},
+    of:function(n){return "Đã chọn "+n+" trên 7"},
     send:"Chuẩn bị Ru của tôi", sent:"Ru của bạn đang được chuẩn bị",
     replyDefault:"Dưới bốn sao, một thành viên của voco sẽ liên hệ ngay trong sáng — khi bạn vẫn còn ở cùng chúng tôi và đêm sau vẫn còn có thể khác đi.",
     replyHigh:"Cảm ơn bạn. Ru đã ghi nhớ những điều bạn yêu thích, để lần trở lại sau vẫn là một giấc nghỉ thân quen.",
@@ -800,6 +863,8 @@ document.getElementById('theme').addEventListener('click', function(){
 /* ---------- language ---------- */
 var lang="en", EN={}, sent=false, rating=0;
 document.querySelectorAll('[data-t]').forEach(function(el){ EN[el.dataset.t]=el.innerHTML; });
+var ENPH={};
+document.querySelectorAll('[data-t-ph]').forEach(function(el){ ENPH[el.dataset.tPh]=el.placeholder; });
 
 function label(v){ return v ? (VAL[lang][v]||v) : "—"; }
 
@@ -808,6 +873,10 @@ function applyLang(){
   document.querySelectorAll('[data-t]').forEach(function(el){
     var k=el.dataset.t;
     el.innerHTML = lang==="vi" ? (VI[k]!==undefined?VI[k]:EN[k]) : EN[k];
+  });
+  document.querySelectorAll('[data-t-ph]').forEach(function(el){
+    var k=el.dataset.tPh;
+    el.placeholder = lang==="vi" ? (VI[k]||ENPH[k]) : ENPH[k];
   });
   document.getElementById('lang').textContent = lang==="vi" ? "English" : "Tiếng Việt";
   var s=document.getElementById('send');
@@ -829,7 +898,7 @@ document.getElementById('lang').addEventListener('click',function(){
 });
 
 /* ---------- night bar ---------- */
-var state={pillow:null,scent:null,sound:null,dark:null,temp:21,tea:null,wake:null};
+var state={pillow:null,scent:null,sound:null,dark:null,temp:21,tea:null,wake:null,occasion:null};
 var tone="#25302E",darkness=.8,warmth=.35,tex="none";
 var bar=document.getElementById('nightbar');
 var cv=document.getElementById('tex');
@@ -849,7 +918,7 @@ function shade(d){
 }
 function pushTo3D(){
   if(window.RU3D) window.RU3D.update({
-    pillow:state.pillow, light:state.dark, tea:state.tea, wake:state.wake,
+    pillow:state.pillow, light:state.dark, tea:state.tea, wake:state.wake, occasion:state.occasion,
     temp:state.temp, tone:tone, darkness:darkness, warmth:warmth,
     theme:document.documentElement.getAttribute('data-theme')
   });
@@ -907,6 +976,8 @@ document.querySelectorAll('.opts').forEach(function(grp){
       if(btn.dataset.tex) tex=btn.dataset.tex;
       if(key==='scent') showStory();
       if(key==='sound') playAudio(btn.dataset.audio||null, btn.dataset.val);
+      if(key==='tea') teaUI(btn);
+      if(key==='occasion') occasionUI(btn.dataset.val);
       paint();sync();
     });
   });
@@ -924,10 +995,11 @@ var LISTS={
   scent:["Trầm Hương","Hòn Khói salt & driftwood","Pomelo & lemongrass","No fragrance"],
   sound:["The bay","White noise","Rain","Silence"],
   dark:["Full blackout","A little light"],
-  tea:["Lotus heart tea","Chamomile","Warm milk","Nothing"],
-  wake:["Sunrise light","Curtains only","Alarm only","Don't wake me"]
+  tea:["Lotus heart tea","Chamomile","Warm milk","A glass of wine","Nothing"],
+  wake:["Sunrise light","Curtains only","Alarm only","Don't wake me"],
+  occasion:["Birthday","Anniversary","Proposal","Honeymoon","Something else","Nothing extra"]
 };
-var ORDER=["pillow","scent","sound","dark","tea","wake"];
+var ORDER=["pillow","scent","sound","dark","tea","wake","occasion"];
 
 function encode(){
   var n=0;
@@ -951,6 +1023,10 @@ function decode(str){
 }
 
 function sync(){
+  var herbalCard=document.querySelector('.opt[data-tea="herbal"]');
+  if(herbalCard && (state.tea==='Lotus heart tea'||state.tea==='Chamomile')){
+    herbalCard.setAttribute('aria-pressed','true');
+  }
   ORDER.forEach(function(k){
     document.querySelector('[data-slot="'+k+'"]').textContent=label(state[k]);
   });
@@ -958,8 +1034,8 @@ function sync(){
   var done=ORDER.filter(function(k){return state[k]}).length;
   var p=PHRASE[lang];
   document.getElementById('progress').textContent =
-    sent ? p.saved : (done===6 ? p.ready : (done===0 ? p.none : p.of(done)));
-  document.getElementById('send').disabled = sent || done!==6;
+    sent ? p.saved : (done===7 ? p.ready : (done===0 ? p.none : p.of(done)));
+  document.getElementById('send').disabled = sent || done!==7;
 }
 
 document.getElementById('send').addEventListener('click',function(){
@@ -967,6 +1043,8 @@ document.getElementById('send').addEventListener('click',function(){
   this.textContent=PHRASE[lang].sent;
   this.disabled=true;
   document.getElementById('codeout').textContent=encode();
+  var n=document.getElementById('note');
+  if(n) n.setAttribute('readonly','readonly');
   document.getElementById('codecard').classList.add('on');
   document.getElementById('morning').classList.add('on');
   document.getElementById('codecard').scrollIntoView({block:'center'});
@@ -982,6 +1060,37 @@ document.querySelectorAll('.star').forEach(function(s){
     setReply();
   });
 });
+
+/* ---------- evening ritual: herbal tea sub-choice ---------- */
+var teaSub=document.getElementById('teaSub');
+function teaUI(btn){
+  var isHerbal = btn && btn.dataset.tea==='herbal';
+  teaSub.classList.toggle('on', !!isHerbal);
+  if(isHerbal && state.tea!=='Lotus heart tea' && state.tea!=='Chamomile'){
+    state.tea='Lotus heart tea';
+  }
+  markChips();
+}
+function markChips(){
+  teaSub.querySelectorAll('.chip').forEach(function(c){
+    c.setAttribute('aria-pressed', String(c.dataset.sub===state.tea));
+  });
+}
+teaSub.querySelectorAll('.chip').forEach(function(c){
+  c.addEventListener('click',function(){
+    state.tea=c.dataset.sub;
+    markChips(); sync(); pushTo3D();
+  });
+});
+
+/* ---------- occasion ---------- */
+var noteWrap=document.getElementById('noteWrap');
+var confirmLine=document.getElementById('confirmLine');
+function occasionUI(val){
+  noteWrap.classList.toggle('on', val==='Something else' || val==='Proposal');
+  confirmLine.classList.toggle('on',
+    val==='Birthday'||val==='Anniversary'||val==='Proposal'||val==='Honeymoon');
+}
 
 /* ---------- scent story ---------- */
 function showStory(){
@@ -1131,8 +1240,25 @@ route();applyTheme();paint();applyLang();
   const lampShade = new THREE.Mesh(new THREE.ConeGeometry(.34,.5,24,1,true),
     new THREE.MeshStandardMaterial({color:0xF6EBD6,emissive:0xF7B70F,emissiveIntensity:0,side:THREE.DoubleSide}));
   lampShade.position.set(2.9,1.3,-1.9); pivot.add(lampShade);
+  // bedside drink — a cup, or a wine glass
   const cup = new THREE.Mesh(new THREE.CylinderGeometry(.14,.11,.2,18), M(0xFAF6EF,.5));
   cup.position.set(2.6,.95,-1.6); cup.visible=false; pivot.add(cup);
+
+  const glass = new THREE.Group();
+  const glassMat = new THREE.MeshPhysicalMaterial({color:0xF2F6F5,roughness:.08,transmission:.9,thickness:.2,transparent:true,opacity:.85});
+  const bowl = new THREE.Mesh(new THREE.CylinderGeometry(.115,.055,.20,20), glassMat); bowl.position.y=.20;
+  const wine = new THREE.Mesh(new THREE.CylinderGeometry(.098,.05,.10,20), M(0x7B1F2E,.25)); wine.position.y=.16;
+  const stem = new THREE.Mesh(new THREE.CylinderGeometry(.014,.014,.16,10), glassMat); stem.position.y=.05;
+  const foot = new THREE.Mesh(new THREE.CylinderGeometry(.085,.085,.012,20), glassMat);
+  glass.add(bowl,wine,stem,foot); glass.position.set(2.6,.86,-1.6); glass.visible=false; pivot.add(glass);
+
+  // alarm clock — shown when the guest wants the alarm only
+  const clock = new THREE.Group();
+  const body = new THREE.Mesh(new THREE.BoxGeometry(.46,.24,.18), M(0x1B1B1E,.5));
+  const faceMat = new THREE.MeshStandardMaterial({color:0x2A0F0F,emissive:0xE0402A,emissiveIntensity:1.4});
+  const face = new THREE.Mesh(new THREE.PlaneGeometry(.30,.11), faceMat); face.position.z=.095;
+  clock.add(body,face); clock.position.set(2.95,.98,-1.62); clock.rotation.y=-0.5;
+  clock.visible=false; pivot.add(clock);
 
   /* ---- scent drift ---- */
   const N=140, pos=new Float32Array(N*3);
@@ -1150,28 +1276,70 @@ route();applyTheme();paint();applyLang();
   camera.lookAt(0,1.3,0);
 
   /* ---- pillow shapes ---- */
-  function setPillows(kind){
-    while(pillows.children.length){ const o=pillows.children[0]; pillows.remove(o); o.geometry.dispose(); o.material.dispose(); }
-    let geo, mat;
+  function makeOnePillow(kind){
+    const g = new THREE.Group();
     if(kind==='Neck contour'){
-      geo=new THREE.CylinderGeometry(.3,.3,1.3,20); geo.rotateZ(Math.PI/2);
-      mat=M(0xE8E2D6,.85);
+      // ergonomic cervical shape: a high back roll, a lower front roll, dip between
+      const matN = M(0xEDE7DA,.75);
+      const back = new THREE.Mesh(new THREE.CylinderGeometry(.30,.30,1.30,22), matN);
+      back.rotation.z = Math.PI/2; back.position.set(0,.16,-.20); g.add(back);
+      const front = new THREE.Mesh(new THREE.CylinderGeometry(.20,.20,1.30,22), matN);
+      front.rotation.z = Math.PI/2; front.position.set(0,.08,.26); g.add(front);
+      const dip = new THREE.Mesh(new THREE.BoxGeometry(1.30,.14,.28), matN);
+      dip.position.set(0,.05,.03); g.add(dip);
     }else if(kind==='Cooling gel'){
-      geo=new THREE.BoxGeometry(1.35,.3,.85); mat=M(0xCDE7EC,.35);
+      // teal, translucent, a little glassy
+      const matG = new THREE.MeshPhysicalMaterial({
+        color:0x63C6CE, roughness:.18, metalness:0, transmission:.55,
+        thickness:.6, clearcoat:.9, clearcoatRoughness:.15, transparent:true, opacity:.95
+      });
+      const s = new THREE.Mesh(new THREE.SphereGeometry(.62,26,18), matG);
+      s.scale.set(1.12,.36,.78); s.position.y=.20; g.add(s);
     }else if(kind==='Firm support'){
-      geo=new THREE.BoxGeometry(1.35,.34,.8); mat=M(0xF4EFE6,.9);
-    }else{ /* soft down, and the default before a choice */
-      geo=new THREE.BoxGeometry(1.4,.42,.95); mat=M(0xFBF7F0,.98);
+      // dense and full: squarer, taller, barely compressed
+      const matF = M(0xF2ECE0,.88);
+      const s = new THREE.Mesh(new THREE.SphereGeometry(.62,24,16), matF);
+      s.scale.set(1.08,.46,.74); s.position.y=.24; g.add(s);
+      const edge = new THREE.Mesh(new THREE.BoxGeometry(1.28,.30,.80), matF);
+      edge.position.y=.22; g.add(edge);
+    }else{
+      // soft down: thicker, rounder, squishy at the corners
+      const matS = new THREE.MeshStandardMaterial({color:0xFDFAF4, roughness:1});
+      const s = new THREE.Mesh(new THREE.SphereGeometry(.66,30,20), matS);
+      s.scale.set(1.10,.50,.86); s.position.y=.26; g.add(s);
+      for(const sx of [-.52,.52]) for(const sz of [-.34,.34]){
+        const c = new THREE.Mesh(new THREE.SphereGeometry(.20,16,12), matS);
+        c.position.set(sx,.20,sz); c.scale.set(1,.72,1); g.add(c);
+      }
     }
-    for(const x of [-.78,.78]){
-      const m=new THREE.Mesh(geo,mat); m.position.x=x; pillows.add(m);
+    return g;
+  }
+  function setPillows(kind){
+    while(pillows.children.length){ pillows.remove(pillows.children[0]); }
+    for(const x of [-.80,.80]){
+      const m = makeOnePillow(kind); m.position.x = x; pillows.add(m);
     }
   }
   setPillows(null);
 
   /* ---- state ---- */
+  // a small cake, for a birthday
+  const cake = new THREE.Group();
+  const tier = new THREE.Mesh(new THREE.CylinderGeometry(.20,.22,.14,22), M(0xF6EFE2,.8));
+  const icing = new THREE.Mesh(new THREE.CylinderGeometry(.205,.205,.03,22), M(0xE8C6C0,.7)); icing.position.y=.085;
+  const candle = new THREE.Mesh(new THREE.CylinderGeometry(.012,.012,.10,8), M(0xFFFFFF,.5)); candle.position.y=.15;
+  const flame = new THREE.Mesh(new THREE.SphereGeometry(.022,10,8),
+    new THREE.MeshStandardMaterial({color:0xFFD79A,emissive:0xF7B70F,emissiveIntensity:2}));
+  flame.position.y=.215;
+  cake.add(tier,icing,candle,flame); cake.position.set(2.35,.92,-2.1); cake.visible=false; pivot.add(cake);
+
+  function mixHex(a,b,t){
+    const A=new THREE.Color(a), B=new THREE.Color(b);
+    return A.lerp(B,t).getHex();
+  }
+
   let target = {win:0x14323F, amb:.9, lampI:0, lampE:0, dust:0, dustC:0xffffff,
-                wall:0xE6DCCF, curtain:0, cup:false};
+                wall:0xE6DCCF, curtain:0, cup:false, glass:false, clock:false, cake:false};
   const lerpC = (mat,hex,t)=>mat.color.lerp(new THREE.Color(hex),t);
 
   window.RU3D = { update(s){
@@ -1187,15 +1355,20 @@ route();applyTheme();paint();applyLang();
     else if(s.wake==='Curtains only'){ target.lampI=0; target.lampE=0; target.curtain=1.6; }
     else { target.lampI=.5; target.lampE=.25; }
 
-    // temperature tints the walls
+    // temperature: cool blue below 21, warm red above it
     const t=s.temp||21;
-    target.wall = t<21 ? 0xD9E4E6 : (t>21 ? 0xEFE0CC : 0xE6DCCF);
+    if(t<21){ const k=(21-t)/4; target.wall = mixHex(0xE6DCCF,0x7FA8C4,Math.min(1,k)); }
+    else if(t>21){ const k=(t-21)/5; target.wall = mixHex(0xE6DCCF,0xD8724E,Math.min(1,k)); }
+    else target.wall = 0xE6DCCF;
 
     // scent drifts through the room, tinted by the note chosen
     if(s.tone && s.tone!=='#25302E'){ target.dust=.45; target.dustC=parseInt(s.tone.slice(1),16); }
     else { target.dust=0; }
 
-    target.cup = !!(s.tea && s.tea!=='Nothing');
+    target.cup   = !!(s.tea && s.tea!=='Nothing' && s.tea!=='A glass of wine');
+    target.glass = (s.tea==='A glass of wine');
+    target.clock = (s.wake==='Alarm only');
+    target.cake  = (s.occasion==='Birthday');
 
     // page theme drives the background behind the room
     scene.background = new THREE.Color(s.theme==='dark' ? 0x0B1418 : 0xF3EFE8);
@@ -1236,6 +1409,9 @@ route();applyTheme();paint();applyLang();
     curtainL.position.z += ((-1.5 - target.curtain) - curtainL.position.z)*.06;
     curtainR.position.z += ((1.9 + target.curtain) - curtainR.position.z)*.06;
     cup.visible = target.cup;
+    glass.visible = !!target.glass;
+    clock.visible = !!target.clock;
+    cake.visible = !!target.cake;
 
     const a=dust.geometry.attributes.position.array;
     for(let i=1;i<a.length;i+=3){ a[i]+=0.004; if(a[i]>5) a[i]=0; }
